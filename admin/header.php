@@ -1,13 +1,15 @@
+<?php
+ob_start();
+include_once('../connection.php');
+//  if(empty($_SESSION['email'])) 
+//     { 
+//         session_start(); 
+//     }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
- include_once('..\connection.php');
- if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    }
-?>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
