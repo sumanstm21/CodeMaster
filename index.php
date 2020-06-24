@@ -161,31 +161,32 @@ ob_start();
       </div>
     </div>
     <!--courses-->
-    <div id="coursesSection">
+    <div id="coursesSection" class="mt-5">
       <h1>See available courses</h1>
       <i class="fas fa-chevron-down"></i>
       <div id="coursesInnerDiv" class="bg-darkblue white mt-3">
-        <button class="accordion">Topic 1</button>
+      <?php
+      $sql ="select * from course order by course_id";
+      $courses = mysqli_query($con,$sql) or die("Error: " . mysqli_error($con));
+      $row = mysqli_fetch_array($courses);
+      foreach($courses as $r){
+      ?>
+        <button class="accordion"><?= $r['title']; ?></button>
         <div class="panel pl-5">
           <ol>
-            <li>Lesson 1</li>
-            <li>Lesson 2</li>
+          <?php 
+          $courseid = $r['course_id'];
+          $sql2 ="select * from lesson where course_id = $courseid ";
+          $lesson = mysqli_query($con,$sql2) or die("Error: " . mysqli_error($con));
+          foreach($lesson as $l){
+          ?>
+            <li><?= $l['title'] ?></li>
+          <?php } ?>
           </ol>
         </div>
-        <button class="accordion">Topic 2</button>
-        <div class="panel pl-5">
-          <ol>
-            <li>Lesson 1</li>
-            <li>Lesson 2</li>
-          </ol>
-        </div>
-        <button class="accordion">Topic 3</button>
-        <div class="panel pl-5">
-          <ol>
-            <li>Lesson 1</li>
-            <li>Lesson 2</li>
-          </ol>
-        </div>   
+        <?php
+      }
+        ?>
       </div>
     </div>
     <div id="aboutSection" class="spacing">

@@ -1,29 +1,19 @@
 <?php
-include 'nav.php';
-$id=$_GET["id"];
+ob_start();
+ include_once('nav.php'); 
 
-$sqlc ="select * from course order by course_id desc";
-$courses = mysqli_query($con,$sqlc);
+ $sql ="select * from course order by course_id";
+ $courses = mysqli_query($con,$sql);
+//  if (!$check1_res) {
+//   printf("Error: %s\n", mysqli_error($con));
+//   exit();
+// }
 
-$sql=" select * from lesson where lesson_id='$id'";
-$r=mysqli_query($con,$sql);
-while($row=mysqli_fetch_array($r)) {
-    $title=$row['title'];
-    // $title1=$row['course_id'];
-    $description=$row['description'];
-    $videolink=$row['video_link'];
-    $date = $row['created_at'];
-}
+//  while($rows = mysqli_fetch_array($courses)){
+//    echo '1';
+//  }
 ?>
-<?php
-// echo $date;
-// // echo $title1;
-// echo $title;
-// echo $videolink;
-// echo $description;
-?>
-
-<main>
+    <main>
       <!-- Container overview and video/script -->
       <div class="container-fluid">
         <div class="row justify-content-between spacing">
@@ -94,15 +84,6 @@ while($row=mysqli_fetch_array($r)) {
           <div class="col-md-7 col-lg-8 ">
             <!-- nested for video/script -->
             <div class="row ">
-            <div class="col-md-12  col-lg-12 bg-darkblue-box" style="padding: 10px; margin-bottom:10px;">
-                <h1 class="neon-green"><?php echo $title; ?>
-                <a href="lesson_favourite.php?id=<?= $id ?>" class="neon-green">
-                <svg class="bi bi-heart" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                </svg>
-                </a>
-                </h1>
-            </div>
               <div class="col-md-12 embed-responsive embed-responsive-16by9">
                 <iframe
                   class="embed-responsive-item"
@@ -110,10 +91,22 @@ while($row=mysqli_fetch_array($r)) {
                 ></iframe>
               </div>
               <!--script-->
-              <div class="col-md-12  col-lg-12 bg-darkblue-box bg-box-spacing">
-                <h1 class="neon-green">Description</h1>
+              <div class="col-md-12  offset-lg-2 col-lg-8 bg-darkblue-box bg-box-spacing">
+                <h1 class="neon-green">Script</h1>
                 <div id="script-txt" class="bg-white-box">
-                  <?php echo $description; ?>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Consequatur qui labore at impedit quam sed incidunt error
+                  animi eaque velit, odio provident. Reprehenderit veritatis,
+                  asperiores nostrum pariatur voluptatibus illo hic.<br /><br />
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptas ipsum qui porro velit exercitationem repellat
+                  provident alias. Harum assumenda voluptatum dolores rem
+                  explicabo est fugiat ut reiciendis incidunt. Eius,
+                  consectetur.<br /><br />
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad
+                  officiis quaerat ducimus suscipit corrupti laudantium vero
+                  autem atque, aliquam dolor cumque ab sit dicta, architecto
+                  provident consequuntur corporis omnis vitae?
                 </div>
               </div>
             </div>
@@ -127,7 +120,7 @@ while($row=mysqli_fetch_array($r)) {
            <!-- exercise container-->
           <div class="col-md-5 bg-darkblue-box bg-box-spacing">
             <h1 class="white">Exercise:</h1>
-            <h1 class="neon-green"><?php echo $title; ?></h1>
+            <h1 class="neon-green">Normalization Form</h1>
             <div id="exercise-txt" class="bg-white-box">
               <p>
                 Normalisation is a technique that consists of a series of rules
@@ -208,7 +201,6 @@ while($row=mysqli_fetch_array($r)) {
     </main>
 
 
-
     <footer class="footer">
   <div class="d-flex justify-content-between align-items-center ">
       <div class="icons flex flex-row ml-md-4 ml-sm-2 my-3 mr-2">
@@ -227,17 +219,8 @@ while($row=mysqli_fetch_array($r)) {
       </div>   
   </div>
 </footer>
-
 <script src="app.js"></script>
-<script src="main.js"></script>
-<script type="text/javascript">
-function checkCode() { 
-  alert('You clicked the top text'); 
-  var code = document.getElementById("code-input").value;
-  alert(code);
-  }
-// function displayCode() { alert('You clicked the bottom text'); }
-  </script>
-
-</body>
+  </body>
 </html>
+
+    

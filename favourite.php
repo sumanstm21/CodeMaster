@@ -10,6 +10,13 @@ include_once 'nav.php';
   <tbody>
 <?php
 
+if(isset($_GET["mode"])) {
+  $userid = $_SESSION['user_id'];
+	$id = $_GET["id"];
+	$sql=" delete from user_favourite where lesson_id='$id' && user_id='$userid' ";
+		$result = mysqli_query($con,$sql);
+}
+
 $sql ="select * from course order by course_id";
 $courses = mysqli_query($con,$sql);
 if(isset($_SESSION['user_id'])){
@@ -35,6 +42,7 @@ if(isset($_SESSION['user_id'])){
                           ?>
                             <tr>
                             <td><a href="lesson.php?id=<?= $lessonid ?>"><?= $lessonrow["title"] ?></a></td>
+                            <td><a href="?mode=delete&id=<?= $lessonid ?>">Delete</a></td>
                             </tr>    
                           <?php
                         }

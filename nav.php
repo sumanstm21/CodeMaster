@@ -190,9 +190,9 @@ ob_start();
               aria-labelledby="navbarDropdown"
             >
             <?php if(isset($_SESSION['email'])){ ?>
-              <a class="dropdown-item" href="profile.php"><?= $_SESSION['email']; ?></a>
+              <a class="dropdown-item" href="main.php"><?= $_SESSION['email']; ?></a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Messages</a>
+              <a class="dropdown-item" href="courses.php">Courses</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Settings</a>
               <div class="dropdown-divider"></div>
