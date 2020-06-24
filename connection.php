@@ -9,7 +9,7 @@ try {
     // $con = mysql_connect("localhost","root","") or die(mysql_error());
     $con = mysqli_connect("localhost","root","") or die(mysqli_error());
     // $db = mysqli_select_db("fifanews",$con) or die(mysqli_error());
-    $db = mysqli_select_db($con, $dbname) or die(mysqli_error());
+    $db = mysqli_select_db($con, $dbname) or die(mysqli_error($con));
     
     }
 catch(PDOException $e)
